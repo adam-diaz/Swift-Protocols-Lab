@@ -40,6 +40,62 @@ Create a new array called sortedPeople of type [`Human`] that is the people arra
 
 </br> </br>
 
+/*
+
+class Human: CustomStringConvertible, Equatable, Comparable {
+    static func < (lhs: Human, rhs: Human) -> Bool {
+        return lhs.age > rhs.age
+    }
+    
+    static func == (lhs: Human, rhs: Human) -> Bool {
+        return lhs.age == rhs.age && lhs.name == rhs.name
+    }
+    
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    
+    var description: String {
+        return "The persons name is \(name) and they are \(age) years old."
+    }
+ 
+}
+
+var adan = Human(name: "adan", age: 24)
+
+var shaniya = Human(name: "shaniya", age: 22)
+
+
+
+print(adan)
+print(shaniya)
+
+
+if adan == shaniya {
+    print("theyre the same")
+} else {
+    print("theyre two different people")
+}
+
+if shaniya > adan {
+    print("Shaniya is older than Adan")
+} else {
+    print("Adan is older than Shaniya")
+}
+
+var tion = Human(name: "tion", age: 25)
+
+print(tion)
+
+let sortedPeople: [Human] = [tion, adan, shaniya]
+
+print(sortedPeople)
+
+*/
 
 ## Question 2
 
