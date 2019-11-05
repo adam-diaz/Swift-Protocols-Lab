@@ -40,8 +40,8 @@ Create a new array called sortedPeople of type [`Human`] that is the people arra
 
 </br> </br>
 
-/*
 
+```swift
 class Human: CustomStringConvertible, Equatable, Comparable {
     static func < (lhs: Human, rhs: Human) -> Bool {
         return lhs.age > rhs.age
@@ -95,7 +95,7 @@ let sortedPeople: [Human] = [tion, adan, shaniya]
 
 print(sortedPeople)
 
-*/
+```
 
 ## Question 2
 
@@ -106,11 +106,49 @@ a. Create a protocol called `Vehicle` with two requirements:
 b. Define a `Car` struct that implements the `Vehicle` protocol. `numberOfWheels` should return a value of 4,
 and drive() should print "Vroom, vroom!" Create an instance of `Car`, print its number of wheels,
 then call drive().
+```swift
+protocol Vehicle {
+    var numberOfWheels: Int {get}
+    func drive()
+}
 
+struct Car: Vehicle, CustomStringConvertible {
+    var description: String {
+        return "The car has \(numberOfWheels) of wheels"
+    }
+    
+    var numberOfWheels: Int = 4
+    
+    func drive() {
+        print("Vroom, vroom!")
+    }
+}
+
+var car1 = Car(numberOfWheels: 4)
+print(car1)
+car1.drive()
+```
 c. Define a Bike struct that implements the `Vehicle` protocol. `numberOfWheels` should return a value of 2,
 and drive() should print "Begin pedaling!". Create an instance of Bike, print its number of wheels,
 then call drive().
 
+```
+struct Bike: Vehicle, CustomStringConvertible {
+    var numberOfWheels: Int = 2
+    
+    var description: String {
+        return "The bike has \(numberOfWheels) of wheels"
+    }
+    
+    func drive() {
+        print("Begin pedaling!")
+    }
+}
+
+var bike1 = Bike(numberOfWheels: 2)
+print(bike1)
+bike1.drive()
+```
 </br> </br>
 
 
