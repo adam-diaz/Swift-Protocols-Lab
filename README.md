@@ -108,7 +108,7 @@ and drive() should print "Vroom, vroom!" Create an instance of `Car`, print its 
 then call drive().
 ```swift
 protocol Vehicle {
-    var numberOfWheels: Int {get}
+var numberOfWheels: Int {get}
     func drive()
 }
 
@@ -125,7 +125,9 @@ struct Car: Vehicle, CustomStringConvertible {
 }
 
 var car1 = Car(numberOfWheels: 4)
+
 print(car1)
+
 car1.drive()
 ```
 c. Define a Bike struct that implements the `Vehicle` protocol. `numberOfWheels` should return a value of 2,
@@ -134,6 +136,7 @@ then call drive().
 
 ```
 struct Bike: Vehicle, CustomStringConvertible {
+    
     var numberOfWheels: Int = 2
     
     var description: String {
@@ -146,7 +149,9 @@ struct Bike: Vehicle, CustomStringConvertible {
 }
 
 var bike1 = Bike(numberOfWheels: 2)
+
 print(bike1)
+
 bike1.drive()
 ```
 </br> </br>
@@ -159,12 +164,35 @@ Give your structs some properties and have them conform to the appropriate proto
 
 ```swift
 protocol Bird {
+ 
  var name: String { get }
+ 
  var canFly: Bool { get }
+
 }
 
 protocol Flyable {
- var airspeedVelocity: Double { get }
+
+var airspeedVelocity: Double { get }
+
+}
+
+struct Penguin: Bird {
+
+var name: String = "Penguin"
+
+var canFLy: Bool = false
+
+}
+
+struct Eagle: Bird, Flyable {
+
+var name: String = "Eagle"
+
+var canFly: Bool = true
+
+var airspeedVelocity: Double = 32.0
+
 }
 ```
 
@@ -180,9 +208,28 @@ c. Create an instance of it named `bruceBanner`. Make it so that when the transf
 `.notHulk` to `.hulk.``
 
 ```swift
-enum SuperHero: Transformation {
-    // write code here.
+
+protocol Transformation {
+    mutating func transform()
 }
+
+enum SuperHero: Transformation {
+    mutating func transform() {
+        switch self {
+        case.Hulk:
+            self = .notHulk
+        case .notHulk:
+            self = .Hulk
+        }
+    }
+    
+    case notHulk
+    case Hulk
+}
+
+var bruceBanner = SuperHero.notHulk
+bruceBanner.transform()
+bruceBanner.transform()
 
 // Example Output:
 var bruceBanner = SuperHero.notHulk
@@ -211,6 +258,34 @@ f. Put an instance of each of your classes in an array.
 
 g. Iterate over the array and have them print their `message` property
 
+```
+protocol Communication {
+    var message: String {get}
+}
+
+class Cow: Communication {
+    var message: String = "Tudo Bem?"
+}
+
+class Dog: Communication {
+    var message: String = "Onde fica as minhas costas"
+}
+
+class Cat: Communication {
+var message: String = "I don't speak portuguese..."
+}
+
+var cow = Cow.init().message
+var dog = Dog.init().message
+var cat = Cat.init().message
+
+var arr = [cow, dog, cat]
+
+for thing in arr {
+    print(thing)
+}
+
+```
 
 ## Question 6
 
